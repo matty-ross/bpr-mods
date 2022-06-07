@@ -2,7 +2,7 @@
 Various mods for Burnout Paradise Remastered.
 
 ## Libraries
-### BurnoutParadiseAPI
+### Burnout Paradise API
 A collection of useful functions to help communicate with the game.
 ### Utility
 A collection of utilities to quicken the mod development process, like detouring, pointer arithmetic and so on.
