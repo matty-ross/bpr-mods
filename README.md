@@ -1,5 +1,11 @@
-# BPR Mods
+# Burnout Paradise Remastered Mods
 Various mods for Burnout Paradise Remastered.
+
+## Libraries
+### BurnoutParadiseAPI
+A collection of useful functions to help communicate with the game.
+### Utility
+A collection of utilities to quicken the mod development process, like detouring, pointer arithmetic and so on.
 
 ## Used third party libraries
 - ImGui: https://github.com/ocornut/imgui
