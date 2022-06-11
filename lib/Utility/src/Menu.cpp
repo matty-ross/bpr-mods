@@ -131,6 +131,14 @@ namespace Utility {
                 return 0;
             }
             break;
+
+        case WM_KEYDOWN:
+        case WM_CHAR:
+            if (Pointer(0x013FC8E0).As<void*>() != nullptr)
+            {
+                Pointer(0x013FC8E0).Field(0x71BF00).As<bool>() = !io.WantCaptureKeyboard;
+            }
+            break;
         }
 
         return ::CallWindowProcA(Get().m_PreviousWindowProc, hWnd, Msg, wParam, lParam);
