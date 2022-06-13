@@ -123,7 +123,7 @@ std::string ExceptionReport::GetModuleName() const
     char filePath[MAX_PATH] = {};
     ::GetModuleFileNameA(module, filePath, sizeof(filePath));
 
-    std::string moduleName = filePath;
+    const std::string moduleName = filePath;
     return moduleName.substr(moduleName.find_last_of("/\\") + 1);
 }
 
