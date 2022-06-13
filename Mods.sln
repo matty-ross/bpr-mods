@@ -11,6 +11,8 @@ Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "Utility", "lib\Utility\Util
 EndProject
 Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "BurnoutParadiseAPI", "lib\BurnoutParadiseAPI\BurnoutParadiseAPI.vcxproj", "{3DF990CA-8074-48FE-960A-27852320FF3E}"
 EndProject
+Project("{8BC9CEB8-8B4A-11D0-8D11-00A0C91BC942}") = "ExceptionReporter", "mods\ExceptionReporter\ExceptionReporter.vcxproj", "{40F8E068-4BF1-4061-8B97-076CAE3A0B43}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|x64 = Debug|x64
@@ -51,6 +53,14 @@ Global
 		{3DF990CA-8074-48FE-960A-27852320FF3E}.Release|x64.Build.0 = Release|x64
 		{3DF990CA-8074-48FE-960A-27852320FF3E}.Release|x86.ActiveCfg = Release|Win32
 		{3DF990CA-8074-48FE-960A-27852320FF3E}.Release|x86.Build.0 = Release|Win32
+		{40F8E068-4BF1-4061-8B97-076CAE3A0B43}.Debug|x64.ActiveCfg = Debug|x64
+		{40F8E068-4BF1-4061-8B97-076CAE3A0B43}.Debug|x64.Build.0 = Debug|x64
+		{40F8E068-4BF1-4061-8B97-076CAE3A0B43}.Debug|x86.ActiveCfg = Debug|Win32
+		{40F8E068-4BF1-4061-8B97-076CAE3A0B43}.Debug|x86.Build.0 = Debug|Win32
+		{40F8E068-4BF1-4061-8B97-076CAE3A0B43}.Release|x64.ActiveCfg = Release|x64
+		{40F8E068-4BF1-4061-8B97-076CAE3A0B43}.Release|x64.Build.0 = Release|x64
+		{40F8E068-4BF1-4061-8B97-076CAE3A0B43}.Release|x86.ActiveCfg = Release|Win32
+		{40F8E068-4BF1-4061-8B97-076CAE3A0B43}.Release|x86.Build.0 = Release|Win32
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
