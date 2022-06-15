@@ -1,7 +1,7 @@
 #pragma once
 
 
-#include <string>
+#include <cstdint>
 
 
 namespace BP {
@@ -13,11 +13,11 @@ namespace BP {
         CgsID(const char* string);
 
         uint64_t GetCompressed() const;
-        const std::string& GetUncompressed() const;
+        const char* GetUncompressed() const;
 
     private:
         uint64_t m_Compressed;
-        std::string m_Uncompressed;
+        char m_Uncompressed[13];
     };
 
 }

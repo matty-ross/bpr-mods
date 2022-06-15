@@ -1,5 +1,7 @@
 #include "CgsID.h"
 
+#include <cstring>
+
 
 namespace BP {
 
@@ -19,7 +21,7 @@ namespace BP {
         }
 
         m_Compressed = id;
-        m_Uncompressed = string;
+        strcpy_s(m_Uncompressed, string);
     }
 
     CgsID::CgsID(const char* string)
@@ -38,7 +40,7 @@ namespace BP {
         }
 
         m_Compressed = id;
-        m_Uncompressed = string;
+        strcpy_s(m_Uncompressed, string);
     }
 
     uint64_t CgsID::GetCompressed() const
@@ -46,7 +48,7 @@ namespace BP {
         return m_Compressed;
     }
 
-    const std::string& CgsID::GetUncompressed() const
+    const char* CgsID::GetUncompressed() const
     {
         return m_Uncompressed;
     }

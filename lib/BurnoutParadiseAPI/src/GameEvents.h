@@ -27,6 +27,7 @@ namespace BP {
         }
     };
     
+    
     struct TeleportVehicleEvent : public GameEvent
     {
         float Position[4];
@@ -37,6 +38,7 @@ namespace BP {
             return AddGameEvent(this, 1, sizeof(*this));
         }
     };
+    
     
     struct ChangeVehicleEvent : public GameEvent
     {

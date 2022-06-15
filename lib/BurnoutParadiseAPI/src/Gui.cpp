@@ -1,16 +1,11 @@
 #include "Gui.h"
 
+#include <cstring>
+
 
 namespace BP {
 
-    HudMessage::HudMessage(const std::string& title, const std::string& text)
-        :
-        m_Title(title),
-        m_Text(text)
-    {
-    }
-
-    void HudMessage::Display()
+    void DisplayHudMessage(const char* title, const char* text)
     {
         struct Params
         {
@@ -19,8 +14,8 @@ namespace BP {
         };
 
         Params params = {};
-        strcpy_s(params.Title, m_Title.c_str());
-        strcpy_s(params.Text, m_Text.c_str());
+        strcpy_s(params.Title, title);
+        strcpy_s(params.Text, text);
 
         __asm
         {
@@ -35,14 +30,24 @@ namespace BP {
         }
     }
 
-    void HudMessage::SetTitle(const std::string& title)
+    const char* GetLocalizedTranslation(const char* stringID)
     {
-        m_Title = title;
-    }
+        const char* localizedTranslation = nullptr;
 
-    void HudMessage::SetText(const std::string& text)
-    {
-        m_Text = text;
+        __asm
+        {
+            push dword ptr [stringID]
+
+            mov ecx, dword ptr ds:[0x013FC8E0]
+            add ecx, 0x7A0E34
+
+            mov eax, 0x0089C6D0
+            call eax
+
+            mov dword ptr [localizedTranslation], eax
+        }
+
+        return localizedTranslation;
     }
 
 }
