@@ -1,0 +1,33 @@
+@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+
+* {
+    font-family: Inconsolata, monospace;
+}
+
+body {
+    background-color: rgb(28, 30, 41);
+    color: rgb(255, 255, 255);
+}
+
+h1 {
+    background-color: rgb(51, 53, 75);
+}
+
+#mods {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    margin-top: 10em;
+}
+
+.card {
+    background-color: rgb(51, 53, 75);
+    /* width: 20em; */
+}
+
+.card-title {
+    color: rgb(255, 255, 255);
+}
+
+.card-text {
+    color: rgb(144, 150, 180);
+}
