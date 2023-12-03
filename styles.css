@@ -34,6 +34,7 @@ a {
     background-color: var(--secondary-color);
     border-top: 2px solid var(--highlight-color);
     cursor: pointer;
+    height: 12em;
 }
 
 .card:hover {

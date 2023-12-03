@@ -2,21 +2,21 @@
     {
         "id": "exception-reporter",
         "title": "Exception Reporter",
-        "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis, aspernatur."
+        "description": "Displays a dialog with exception's information when it occurs."
     },
     {
         "id": "free-camera",
         "title": "Free Camera",
-        "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis, aspernatur."
+        "description": "Allows moving the external camera around the city. Plus various camera properties that can be changed."
     },
     {
         "id": "bully-repellent",
         "title": "Bully Repellent",
-        "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis, aspernatur."
+        "description": "Automatically kicks or mutes a player on the user's blacklist."
     },
     {
         "id": "protection",
         "title": "Protection",
-        "description": "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Omnis, aspernatur."
+        "description": "Replaces the new vehicle's or challenge's ID sent over the network to avoid crashing players."
     }
 ]
