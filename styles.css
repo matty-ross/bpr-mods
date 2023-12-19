@@ -21,6 +21,10 @@ header {
     background-color: var(--secondary-color);
 }
 
+main {
+    flex: 1;
+}
+
 footer {
     border-top: 2px solid var(--highlight-color);
 }
@@ -28,6 +32,14 @@ footer {
 a {
     color: var(--primary-text-color);
     text-decoration: none;
+}
+
+a.highlighted {
+    color: var(--highlight-color);
+}
+
+.container {
+    min-height: 100vh;
 }
 
 .card {
