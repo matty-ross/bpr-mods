@@ -38,6 +38,10 @@ a.highlighted {
     color: var(--highlight-color);
 }
 
+img {
+    max-width: 75%;
+}
+
 .container {
     min-height: 100vh;
 }

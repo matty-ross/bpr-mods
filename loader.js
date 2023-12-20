@@ -7,6 +7,9 @@ const mods = [
             "It may not catch every exception.",
             "Don't expect people immediatelly knowing what's wrong by uploading a screenshot of the exception report.",
         ],
+        images: [
+            'exception-reporter.png',
+        ],
     },
     {
         id: 'free-camera',
@@ -15,6 +18,10 @@ const mods = [
         notes: [
             "Press F7 to toggle the menu.",
             "Use your mouse to freely transform the camera.",
+        ],
+        images: [
+            'free-camera-menu.png',
+            'free-camera.png',
         ],
     },
     {
@@ -26,6 +33,9 @@ const mods = [
             "Players added to the blacklist aren't automatically kicked or muted, you must check either 'Autokick' or 'Automute'.",
             "You cannot add yourself to the list, nor the same player multiple times.",
         ],
+        images: [
+            'bully-repellent-menu.png',
+        ],
     },
     {
         id: 'protection',
@@ -35,6 +45,9 @@ const mods = [
             "Press F7 to toggle the menu.",
             "New vehicles and challenges are added to the protection list automatically.",
             "You can individually set the replacement vehicle/challenge, or let it use the fallback vehicle/challenge.",
+        ],
+        images: [
+            'protection-menu.png',
         ],
     },
 ];
@@ -63,7 +76,7 @@ class Loader {
             modCard.querySelector('a').href = `?mod=${mod.id}`;
             modCard.querySelector('.card-title').textContent = mod.title;
             modCard.querySelector('.card-text').textContent = mod.description;
-            dummyDiv.querySelector('ul').append(modCard);
+            dummyDiv.querySelector('#mods').append(modCard);
         }
         return dummyDiv.innerHTML;
     }
@@ -77,6 +90,12 @@ class Loader {
             const li = document.createElement('li');
             li.textContent = note;
             dummyDiv.querySelector('.mod-notes').append(li);
+        }
+        for (const image of mod.images) {
+            const modImage = dummyDiv.querySelector('#mod-image').content.cloneNode(true);
+            modImage.querySelector('img').src = `/img/mods/${image}`;
+            modImage.querySelector('img').alt = image;
+            dummyDiv.querySelector('.mod-images').append(modImage);
         }
         return dummyDiv.innerHTML;
     }
