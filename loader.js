@@ -12,7 +12,7 @@ const mods = [
         ],
         downloads: [
             '1.0.0',
-        ]
+        ],
     },
     {
         id: 'free-camera',
@@ -28,7 +28,7 @@ const mods = [
         ],
         downloads: [
             '1.0.0',
-        ]
+        ],
     },
     {
         id: 'bully-repellent',
@@ -44,7 +44,7 @@ const mods = [
         ],
         downloads: [
             '1.0.0',
-        ]
+        ],
     },
     {
         id: 'protection',
@@ -60,7 +60,7 @@ const mods = [
         ],
         downloads: [
             '1.0.0',
-        ]
+        ],
     },
 ];
 
