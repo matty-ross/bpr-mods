@@ -26,7 +26,10 @@
                         </a>
                     </div>
                     <div class="col-6 text-center">Matty</div>
-                    <div class="col-3 text-end">2023</div>
+                    <div id="year" class="col-3 text-end"></div>
+                    <script>
+                        document.querySelector('#year').textContent = new Date().getFullYear();
+                    </script>
                 </div>
             </footer>
         </div>
