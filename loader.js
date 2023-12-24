@@ -93,20 +93,20 @@ class Loader {
         }
         for (const image of mod.images) {
             const modImage = dummyDiv.querySelector('#mod-image').content.cloneNode(true);
-            modImage.querySelector('img').src = `/img/mods/${image}`;
+            modImage.querySelector('img').src = `./img/mods/${image}`;
             modImage.querySelector('img').alt = image;
             dummyDiv.querySelector('.mod-images').append(modImage);
         }
         for (const a of dummyDiv.querySelectorAll('.mod-downloads a')) {
             const version = a.textContent;
-            a.href = `/downloads/${version}/${mod.id}.zip`;
+            a.href = `./downloads/${version}/${mod.id}.zip`;
             a.download = `${mod.id}-${version}.zip`;
         }
         return dummyDiv.innerHTML;
     }
 
     static async #getPage(page) {
-        const response = await fetch(`/pages/${page}.html`);
+        const response = await fetch(`./pages/${page}.html`);
         const html = await response.text();
         return html;
     }
