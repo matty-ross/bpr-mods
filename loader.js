@@ -10,9 +10,6 @@ const mods = [
         images: [
             'exception-reporter.png',
         ],
-        downloads: [
-            '1.0.0',
-        ],
     },
     {
         id: 'free-camera',
@@ -25,9 +22,6 @@ const mods = [
         images: [
             'free-camera-menu.png',
             'free-camera.png',
-        ],
-        downloads: [
-            '1.0.0',
         ],
     },
     {
@@ -42,9 +36,6 @@ const mods = [
         images: [
             'bully-repellent-menu.png',
         ],
-        downloads: [
-            '1.0.0',
-        ],
     },
     {
         id: 'protection',
@@ -57,10 +48,7 @@ const mods = [
         ],
         images: [
             'protection-menu.png',
-        ],
-        downloads: [
-            '1.0.0',
-        ],
+        ],        
     },
 ];
 
@@ -109,11 +97,10 @@ class Loader {
             modImage.querySelector('img').alt = image;
             dummyDiv.querySelector('.mod-images').append(modImage);
         }
-        for (const download of mod.downloads) {
-            const modDownload = dummyDiv.querySelector('#mod-download').content.cloneNode(true);
-            modDownload.querySelector('a').href = `/downloads/${mod.id}-${download}.zip`;
-            modDownload.querySelector('a').textContent = download;
-            dummyDiv.querySelector('.mod-downloads').append(modDownload);
+        for (const a of dummyDiv.querySelectorAll('.mod-downloads a')) {
+            const version = a.textContent;
+            a.href = `/downloads/${version}/${mod.id}.zip`;
+            a.download = `${mod.id}-${version}.zip`;
         }
         return dummyDiv.innerHTML;
     }
