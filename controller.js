@@ -52,6 +52,14 @@ const mods = [
     },
 ];
 
+const packs = [
+    {
+        id: 'rv2-vehicles',
+        title: 'RV2 Vehicles',
+        description: "Ported RV2 vehicles.",
+    },
+];
+
 
 class Controller {
     constructor() {
@@ -63,69 +71,70 @@ class Controller {
     }
 
     route() {
-        if (this.queryMod === null && this.queryPack === null) {
-            this.#loadCards();
+        const mod = mods.find(mod => mod.id === this.queryMod);
+        if (mod) {
+            this.#loadMod(mod);
             return;
         }
+
+        const pack = packs.find(pack => pack.id === this.queryPack);
+        if (pack) {
+            this.#loadPack(pack);
+            return;
+        }
+
+        this.#loadCards();
     }
 
     async #loadCards() {
         const html = await Controller.#getContentHTML('cards.html');
         
         for (const mod of mods) {
-            const card = html.querySelector('#card').content.cloneNode(true);
-            card.querySelector('a').href = `?mod=${mod.id}`;
-            card.querySelector('.card-title').textContent = mod.title;
-            card.querySelector('.card-text').textContent = mod.description;
-            html.querySelector('#mods').append(card);
+            const cardTemplate = html.querySelector('#card').content.cloneNode(true);
+            cardTemplate.querySelector('a').href = `?mod=${mod.id}`;
+            cardTemplate.querySelector('.card-title').textContent = mod.title;
+            cardTemplate.querySelector('.card-text').textContent = mod.description;
+            html.querySelector('#mods').append(cardTemplate);
+        }
+
+        for (const pack of packs) {
+            const cardTemplate = html.querySelector('#card').content.cloneNode(true);
+            cardTemplate.querySelector('a').href = `?pack=${pack.id}`;
+            cardTemplate.querySelector('.card-title').textContent = pack.title;
+            cardTemplate.querySelector('.card-text').textContent = pack.description;
+            html.querySelector('#packs').append(cardTemplate);
         }
 
         this.main.innerHTML = html.innerHTML;
     }
 
-    // ------------
+    async #loadMod(mod) {
+        const html = await Controller.#getContentHTML('mods/mod-template.html');
 
-    // async load() {
-    //     const mod = mods.find(mod => mod.id === this.queryMod);
-    //     if (mod === undefined) {
-    //         this.main.innerHTML = await this.#getModsPage();
-    //     } else {
-    //         this.main.innerHTML = await this.#getModPage(mod);
-    //     }
-    // }
-
-    // async #getModsPage() {
-    //     const dummyDiv = document.createElement('div');
-    //     dummyDiv.innerHTML = await Loader.#getPage('mods');
-    //     for (const mod of mods) {
-    //         const modCard = dummyDiv.querySelector('#mod-card').content.cloneNode(true);
-    //         modCard.querySelector('a').href = `?mod=${mod.id}`;
-    //         modCard.querySelector('.card-title').textContent = mod.title;
-    //         modCard.querySelector('.card-text').textContent = mod.description;
-    //         dummyDiv.querySelector('#mods').append(modCard);
-    //     }
-    //     return dummyDiv.innerHTML;
-    // }
-
-    // async #createItem(item) {
-    //     const itemTemplate = Loader.#loadTemplate('item');
+        html.querySelector('#title').textContent = mod.title;
+        html.querySelector('#description').textContent = mod.description;
         
-    //     itemTemplate.querySelector('#title').textContent = item.title;
-    //     itemTemplate.querySelector('#description').textContent = item.description;
-    //     for (const note of item.notes) {
-    //         const liElement = document.createElement('li');
-    //         liElement.textContent = note;
-    //         itemTemplate.querySelector('#notes').append(liElement);
-    //     }
-    //     for (const image of item.images) {
-    //         const imageTemplateElement = dummyDiv.querySelector('#image').content.cloneNode(true);
-    //         imageTemplateElement.querySelector('img').src = `./img/mods/${image}`;
-    //         imageTemplateElement.querySelector('img').alt = image;
-    //         dummyDiv.querySelector('#images').append(imageTemplateElement);
-    //     }
+        for (const note of mod.notes) {
+            const li = document.createElement('li');
+            li.textContent = note;
+            html.querySelector('#notes').append(li);
+        }
         
-    //     return itemTemplate;
-    // }
+        for (const image of mod.images) {
+            const imageTemplate = html.querySelector('#image').content.cloneNode(true);
+            imageTemplate.querySelector('img').src = `./img/mods/${image}`;
+            imageTemplate.querySelector('img').alt = image;
+            html.querySelector('#images').append(imageTemplate);
+        }
+        
+        this.main.innerHTML = html.innerHTML;
+    }
+
+    async #loadPack(pack) {
+        const html = await Controller.#getContentHTML(`packs/${pack.id}.html`);
+
+        this.main.innerHTML = html.innerHTML;
+    }
 
     static async #getContentHTML(path) {
         const response = await fetch(`./content/${path}`);
