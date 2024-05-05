@@ -6,7 +6,6 @@
         <meta name="author" content="Matty">
         <meta name="description" content="Mods for Burnout Paradise Remastered">
         <meta name="keywords" content="Burnout Paradise Remastered, BPR, mods, packs">
-        
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         
         <title>Matty's BPR Mods</title>
@@ -21,7 +20,8 @@
         <script src="./controller.js" defer></script>
     </head>
     <body>
-        <div class="container">
+        <div class="container d-flex flex-column">
+            
             <header class="px-3 py-2 mt-3 mb-5">
                 <a href="./">
                     <h1 class="text-center">Burnout Paradise Remastered Mods</h1>
@@ -33,10 +33,15 @@
             <!-- dynamic content end -->
             
             <footer class="px-3 py-2 mt-5 mb-3">
-                <div class="row">
-                    <div class="col-3">
-                        <a href="#"></a> <!-- TODO: GitHub link -->
-                        <a href="#"></a> <!-- TODO: YouTube link -->
+                <div class="row align-items-center">
+                    
+                    <div class="col-3 d-flex gap-3">
+                        <a href="https://github.com/matty-ross" target="_blank">
+                            <img src="./img/social/github-logo.png" alt="github-logo" height="30">
+                        </a>
+                        <a href="https://www.youtube.com/@PISros0724" target="_blank">
+                            <img src="./img/social/youtube-logo.png" alt="youtube-logo" height="30">
+                        </a>
                     </div>
                     
                     <div class="col-6 text-center">Matty</div>
@@ -47,31 +52,10 @@
                             document.querySelector('#year').textContent = new Date().getFullYear();
                         </script>
                     </div>
+
                 </div>
             </footer>
+
         </div>
-        
-        <!-- <div class="container d-flex flex-column">
-            <header class="rounded p-3 mt-3 mb-5">
-                <a href="./">
-                    <h1 class="text-center">Burnout Paradise Remastered Mods</h1>
-                </a>
-            </header>
-            <main class="px-3"></main>
-            <footer class="p-3 mt-5 mb-3">
-                <div class="row align-items-center">
-                    <div class="col-3 text-start">
-                        <a href="https://github.com/matty-ross/bpr-mods-repository" target="_blank">
-                            <img src="./img/github-logo.svg" alt="github-logo" height="30">
-                        </a>
-                    </div>
-                    <div class="col-6 text-center">Matty</div>
-                    <div id="year" class="col-3 text-end"></div>
-                    <script>
-                        document.querySelector('#year').textContent = new Date().getFullYear();
-                    </script>
-                </div>
-            </footer>
-        </div> -->
     </body>
 </html>
