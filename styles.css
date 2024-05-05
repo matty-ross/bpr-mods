@@ -1,11 +1,12 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata');
 
 :root {
-    --primary-color: rgb(28, 30, 41);
-    --secondary-color: rgb(51, 53, 75);
+    --primary-background-color: rgb(28, 30, 41);
+    --secondary-background-color: rgb(51, 53, 75);
     --primary-text-color: rgb(255, 255, 255);
     --secondary-text-color: rgb(144, 150, 180);
-    --highlight-color: rgb(235, 60, 104);
+    --red-color: rgb(235, 60, 104);
+    --blue-color: rgb(0, 231, 231);
 }
 
 * {
@@ -13,20 +14,20 @@
 }
 
 body {
-    background-color: var(--primary-color);
+    background-color: var(--primary-background-color);
     color: var(--primary-text-color);
 }
 
 header {
-    background-color: var(--secondary-color);
+    background-color: var(--secondary-background-color);
 }
 
-main {
+/* main {
     flex: 1;
-}
+} */
 
 footer {
-    border-top: 2px solid var(--highlight-color);
+    border-top: 2px solid var(--red-color);
 }
 
 a {
@@ -34,37 +35,37 @@ a {
     text-decoration: none;
 }
 
-a.highlighted {
+/* a.highlighted {
     color: var(--highlight-color);
-}
+} */
 
-img {
+/* img {
     max-width: 75%;
-}
+} */
 
-.container {
+/* .container {
     min-height: 100vh;
-}
+} */
 
-.card {
+/* .card {
     background-color: var(--secondary-color);
     border-top: 2px solid var(--highlight-color);
     cursor: pointer;
     height: 12em;
-}
+} */
 
-.card:hover {
+/* .card:hover {
     box-shadow: 0 3px 10px var(--highlight-color);
-}
+} */
 
-.card-title {
+/* .card-title {
     color: var(--primary-text-color);
-}
+} */
 
-.card-text {
+/* .card-text {
     color: var(--secondary-text-color);
-}
+} */
 
-.cards {
+/* .cards {
     grid-template-columns: repeat(auto-fit, 20em);
-}
+} */
