@@ -1,47 +1,21 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata');
 
 :root {
-    --primary-background-color: rgb(28, 30, 41);
-    --secondary-background-color: rgb(51, 53, 75);
-    --primary-text-color: rgb(255, 255, 255);
-    --secondary-text-color: rgb(144, 150, 180);
+    --bs-body-font-family: Inconsolata, monospace;
+
+    --bs-body-bg-rgb: 28, 30, 41;
+    --bs-body-color-rgb: 255, 255, 255;
+
+    --bs-secondary-bg-rgb: 51, 53, 75;
+    --bs-secondary-color-rgb: 144, 150, 180;
+
     --red-color: rgb(235, 60, 104);
     --blue-color: rgb(0, 231, 231);
-}
-
-* {
-    font-family: Inconsolata, monospace;
-}
-
-body {
-    background-color: var(--primary-background-color);
-    color: var(--primary-text-color);
-}
-
-header {
-    background-color: var(--secondary-background-color);
 }
 
 main {
     flex: 1;
 }
-
-footer {
-    border-top: 2px solid var(--red-color);
-}
-
-a {
-    color: var(--primary-text-color);
-    text-decoration: none;
-}
-
-/* a.highlighted {
-    color: var(--highlight-color);
-} */
-
-/* img {
-    max-width: 75%;
-} */
 
 .container {
     min-height: 100vh;
