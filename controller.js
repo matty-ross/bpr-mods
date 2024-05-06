@@ -70,43 +70,55 @@ class Controller {
         this.queryPack = searchParams.get('pack');
     }
 
-    // route() {
-    //     const mod = mods.find(mod => mod.id === this.queryMod);
-    //     if (mod) {
-    //         this.#loadMod(mod);
-    //         return;
-    //     }
+    route() {
+        // const mod = mods.find(mod => mod.id === this.queryMod);
+        // if (mod) {
+        //     this.#loadMod(mod);
+        //     return;
+        // }
 
-    //     const pack = packs.find(pack => pack.id === this.queryPack);
-    //     if (pack) {
-    //         this.#loadPack(pack);
-    //         return;
-    //     }
+        // const pack = packs.find(pack => pack.id === this.queryPack);
+        // if (pack) {
+        //     this.#loadPack(pack);
+        //     return;
+        // }
 
-    //     this.#loadCards();
-    // }
+        this.#loadCards();
+    }
 
-    // async #loadCards() {
-    //     const html = await Controller.#getContentHTML('cards.html');
+    async #loadCards() {
+        const html = await Controller.#getContentHTML('cards.html');
+
+        // testing code
+        for (let i = 0; i < 10; ++i) {
+            const cardTemplate = html.querySelector('#card').content.cloneNode(true);
+            html.querySelector('#mods').appendChild(cardTemplate);
+        }
+
+        // testing code
+        for (let i = 0; i < 10; ++i) {
+            const cardTemplate = html.querySelector('#card').content.cloneNode(true);
+            html.querySelector('#packs').appendChild(cardTemplate);
+        }
         
-    //     for (const mod of mods) {
-    //         const cardTemplate = html.querySelector('#card').content.cloneNode(true);
-    //         cardTemplate.querySelector('a').href = `?mod=${mod.id}`;
-    //         cardTemplate.querySelector('.card-title').textContent = mod.title;
-    //         cardTemplate.querySelector('.card-text').textContent = mod.description;
-    //         html.querySelector('#mods').append(cardTemplate);
-    //     }
+        // for (const mod of mods) {
+        //     const cardTemplate = html.querySelector('#card').content.cloneNode(true);
+        //     cardTemplate.querySelector('a').href = `?mod=${mod.id}`;
+        //     cardTemplate.querySelector('.card-title').textContent = mod.title;
+        //     cardTemplate.querySelector('.card-text').textContent = mod.description;
+        //     html.querySelector('#mods').append(cardTemplate);
+        // }
 
-    //     for (const pack of packs) {
-    //         const cardTemplate = html.querySelector('#card').content.cloneNode(true);
-    //         cardTemplate.querySelector('a').href = `?pack=${pack.id}`;
-    //         cardTemplate.querySelector('.card-title').textContent = pack.title;
-    //         cardTemplate.querySelector('.card-text').textContent = pack.description;
-    //         html.querySelector('#packs').append(cardTemplate);
-    //     }
+        // for (const pack of packs) {
+        //     const cardTemplate = html.querySelector('#card').content.cloneNode(true);
+        //     cardTemplate.querySelector('a').href = `?pack=${pack.id}`;
+        //     cardTemplate.querySelector('.card-title').textContent = pack.title;
+        //     cardTemplate.querySelector('.card-text').textContent = pack.description;
+        //     html.querySelector('#packs').append(cardTemplate);
+        // }
 
-    //     this.main.innerHTML = html.innerHTML;
-    // }
+        this.main.innerHTML = html.innerHTML;
+    }
 
     // async #loadMod(mod) {
     //     const html = await Controller.#getContentHTML('mods/mod-template.html');
@@ -136,17 +148,17 @@ class Controller {
     //     this.main.innerHTML = html.innerHTML;
     // }
 
-    // static async #getContentHTML(path) {
-    //     const response = await fetch(`./content/${path}`);
-    //     const html = await response.text();
+    static async #getContentHTML(path) {
+        const response = await fetch(`./content/${path}`);
+        const html = await response.text();
         
-    //     const parser = new DOMParser();
-    //     return parser.parseFromString(html, 'text/html').body;
-    // }
+        const parser = new DOMParser();
+        return parser.parseFromString(html, 'text/html').body;
+    }
 }
 
 
 (() => {
     const controller = new Controller();
-    // controller.route();
+    controller.route();
 })();

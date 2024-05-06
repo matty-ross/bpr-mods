@@ -17,8 +17,20 @@ main {
     flex: 1;
 }
 
+a {
+    text-decoration: none;
+}
+
 .container {
     min-height: 100vh;
+}
+
+#mods .card {
+    border-top: 3px solid var(--red-color);
+}
+
+#packs .card {
+    border-top: 3px solid var(--blue-color);
 }
 
 /* .card {
@@ -40,6 +52,6 @@ main {
     color: var(--secondary-text-color);
 } */
 
-/* .cards {
-    grid-template-columns: repeat(auto-fit, 20em);
-} */
+#mods, #packs {
+    grid-template-columns: repeat(auto-fit, 250px);
+}

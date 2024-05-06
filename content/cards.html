@@ -1,21 +1,24 @@
-<div class="mb-5">
+<div>
     <h2 class="text-center mb-4">Mods</h2>
-    <ul id="mods" class="cards d-grid justify-content-center gap-5 list-unstyled"></ul>
+    <div id="mods" class="d-grid justify-content-center gap-5"></div>
 </div>
-<hr>
-<div class="mb-5">
+
+<hr class="my-5">
+
+<div>
     <h2 class="text-center mb-4">Packs</h2>
-    <ul id="packs" class="cards d-grid justify-content-center gap-5 list-unstyled"></ul>
+    <div id="packs" class="d-grid justify-content-center gap-5"></div>
 </div>
+
 <template id="card">
-    <li>
+    <div class="col">
         <a href="#">
-            <div class="card">
+            <div class="card rounded-0 bg-body-secondary">
                 <div class="card-body">
-                    <p class="card-title mb-3 h3"></p>
-                    <p class="card-text"></p>
+                    <h3 class="card-title text-body">Item</h3>
+                    <p class="card-text text-secondary">Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam a adipisci magnam, quis ipsam velit suscipit ab cum illum illo?</p>
                 </div>
             </div>
         </a>
-    </li>
+    </div>
 </template>
