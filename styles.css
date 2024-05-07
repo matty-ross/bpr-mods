@@ -1,16 +1,16 @@
 @import url('https://fonts.googleapis.com/css?family=Inconsolata');
 
 :root {
-    --bs-body-font-family: Inconsolata, monospace;
-
-    --bs-body-bg-rgb: 28, 30, 41;
-    --bs-body-color-rgb: 255, 255, 255;
-
-    --bs-secondary-bg-rgb: 51, 53, 75;
-    --bs-secondary-color-rgb: 144, 150, 180;
-
+    --gray-color: rgb(144, 150, 180);
     --red-color: rgb(235, 60, 104);
     --blue-color: rgb(0, 231, 231);
+    
+    --bs-body-font-family: Inconsolata, monospace;
+    
+    --bs-body-bg: rgb(28, 30, 41);
+    --bs-body-color: rgb(255, 255, 255);
+
+    --bs-heading-color: var(--bs-body-color);
 }
 
 main {
@@ -25,33 +25,27 @@ a {
     min-height: 100vh;
 }
 
+.card {
+    --bs-card-title-color: var(--bs-body-color);
+    --bs-card-color: var(--gray-color);
+    --bs-card-border-color: var(--gray-color);
+    --bs-card-height: 300px;
+
+    border-top-width: 3px;
+}
+
+.card:hover {
+    box-shadow: var(--bs-box-shadow-lg);
+}
+
 #mods .card {
-    border-top: 3px solid var(--red-color);
+    border-top-color: var(--red-color);
 }
 
 #packs .card {
-    border-top: 3px solid var(--blue-color);
+    border-top-color: var(--blue-color);
 }
 
-/* .card {
-    background-color: var(--secondary-color);
-    border-top: 2px solid var(--highlight-color);
-    cursor: pointer;
-    height: 12em;
-} */
-
-/* .card:hover {
-    box-shadow: 0 3px 10px var(--highlight-color);
-} */
-
-/* .card-title {
-    color: var(--primary-text-color);
-} */
-
-/* .card-text {
-    color: var(--secondary-text-color);
-} */
-
-#mods, #packs {
+#mods ul, #packs ul {
     grid-template-columns: repeat(auto-fit, 250px);
 }

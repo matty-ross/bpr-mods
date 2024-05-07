@@ -92,13 +92,13 @@ class Controller {
         // testing code
         for (let i = 0; i < 10; ++i) {
             const cardTemplate = html.querySelector('#card').content.cloneNode(true);
-            html.querySelector('#mods').appendChild(cardTemplate);
+            html.querySelector('#mods ul').appendChild(cardTemplate);
         }
 
         // testing code
         for (let i = 0; i < 10; ++i) {
             const cardTemplate = html.querySelector('#card').content.cloneNode(true);
-            html.querySelector('#packs').appendChild(cardTemplate);
+            html.querySelector('#packs ul').appendChild(cardTemplate);
         }
         
         // for (const mod of mods) {
