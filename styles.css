@@ -8,6 +8,7 @@
     --bs-body-bg: hsl(230deg 20% 15%);
     --bs-body-color: hsl(230deg 20% 75%);
     --bs-heading-color: hsl(230deg 20% 90%);
+    --bs-border-color: hsl(230deg 20% 60%);
 }
 
 main {
@@ -24,7 +25,7 @@ a {
 
 .card {
     --bs-card-title-color: var(--bs-heading-color);
-    --bs-card-border-color: hsl(230deg 20% 60%);
+    --bs-card-border-color: var(--bs-border-color);
     --bs-card-height: 300px;
 
     border-top-width: 3px;
@@ -32,6 +33,16 @@ a {
 
 .card:hover {
     box-shadow: var(--bs-box-shadow-lg);
+}
+
+.table {
+    --bs-table-color: var(--bs-body-color);
+}
+
+.btn {
+    --bs-btn-color: var(--red-color);
+    --bs-btn-hover-color: var(--blue-color);
+    --bs-btn-active-color: var(--blue-color);
 }
 
 #mods .card {
