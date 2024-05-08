@@ -45,5 +45,5 @@ a {
 }
 
 #mods ul, #packs ul {
-    grid-template-columns: repeat(auto-fit, 250px);
+    grid-template-columns: repeat(auto-fill, 250px);
 }

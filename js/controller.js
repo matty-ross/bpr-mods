@@ -30,32 +30,25 @@ class Controller {
     async #loadCards() {
         const html = await Controller.#getContentHTML('cards.html');
 
-        for (let i = 0; i < 10; ++i) {
+        for (const mod of mods) {
             const cardTemplate = html.querySelector('#card').content.cloneNode(true);
+            
+            cardTemplate.querySelector('a').href = `?mod=${mod.id}`;
+            cardTemplate.querySelector('.card-title').innerText = mod.title;
+            cardTemplate.querySelector('.card-text').innerHTML = mod.description;
+
             html.querySelector('#mods ul').appendChild(cardTemplate);
         }
 
-        // testing code
-        for (let i = 0; i < 10; ++i) {
+        for (const pack of packs) {
             const cardTemplate = html.querySelector('#card').content.cloneNode(true);
+            
+            cardTemplate.querySelector('a').href = `?pack=${pack.id}`;
+            cardTemplate.querySelector('.card-title').innerText = pack.title;
+            cardTemplate.querySelector('.card-text').innerHTML = pack.description;
+            
             html.querySelector('#packs ul').appendChild(cardTemplate);
         }
-        
-        // for (const mod of mods) {
-        //     const cardTemplate = html.querySelector('#card').content.cloneNode(true);
-        //     cardTemplate.querySelector('a').href = `?mod=${mod.id}`;
-        //     cardTemplate.querySelector('.card-title').textContent = mod.title;
-        //     cardTemplate.querySelector('.card-text').textContent = mod.description;
-        //     html.querySelector('#mods').append(cardTemplate);
-        // }
-
-        // for (const pack of packs) {
-        //     const cardTemplate = html.querySelector('#card').content.cloneNode(true);
-        //     cardTemplate.querySelector('a').href = `?pack=${pack.id}`;
-        //     cardTemplate.querySelector('.card-title').textContent = pack.title;
-        //     cardTemplate.querySelector('.card-text').textContent = pack.description;
-        //     html.querySelector('#packs').append(cardTemplate);
-        // }
 
         this.main.innerHTML = html.innerHTML;
     }
