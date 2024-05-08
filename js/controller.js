@@ -12,17 +12,17 @@ class Controller {
     }
 
     route() {
-        // const mod = mods.find(mod => mod.id === this.queryMod);
-        // if (mod) {
-        //     this.#loadMod(mod);
-        //     return;
-        // }
+        const mod = mods.find(mod => mod.id === this.queryMod);
+        if (mod) {
+            this.#loadMod(mod);
+            return;
+        }
 
-        // const pack = packs.find(pack => pack.id === this.queryPack);
-        // if (pack) {
-        //     this.#loadPack(pack);
-        //     return;
-        // }
+        const pack = packs.find(pack => pack.id === this.queryPack);
+        if (pack) {
+            this.#loadPack(pack);
+            return;
+        }
 
         this.#loadCards();
     }
@@ -53,33 +53,35 @@ class Controller {
         this.main.innerHTML = html.innerHTML;
     }
 
-    // async #loadMod(mod) {
-    //     const html = await Controller.#getContentHTML('mods/mod-template.html');
+    async #loadMod(mod) {
+        const html = await Controller.#getContentHTML('item.html');
 
-    //     html.querySelector('#title').textContent = mod.title;
-    //     html.querySelector('#description').textContent = mod.description;
+        html.querySelector('#title').innerText = mod.title;
+        html.querySelector('#description').innerText = mod.description;
         
-    //     for (const note of mod.notes) {
-    //         const li = document.createElement('li');
-    //         li.textContent = note;
-    //         html.querySelector('#notes').append(li);
-    //     }
+        for (const note of mod.notes) {
+            const li = document.createElement('li');
+            li.innerText = note;
+            html.querySelector('#notes ul').append(li);
+        }
         
-    //     for (const image of mod.images) {
-    //         const imageTemplate = html.querySelector('#image').content.cloneNode(true);
-    //         imageTemplate.querySelector('img').src = `./img/mods/${image}`;
-    //         imageTemplate.querySelector('img').alt = image;
-    //         html.querySelector('#images').append(imageTemplate);
-    //     }
-        
-    //     this.main.innerHTML = html.innerHTML;
-    // }
+        this.main.innerHTML = html.innerHTML;
+    }
 
-    // async #loadPack(pack) {
-    //     const html = await Controller.#getContentHTML(`packs/${pack.id}.html`);
+    async #loadPack(pack) {
+        const html = await Controller.#getContentHTML('item.html');
 
-    //     this.main.innerHTML = html.innerHTML;
-    // }
+        html.querySelector('#title').innerText = pack.title;
+        html.querySelector('#description').innerText = pack.description;
+
+        for (const note of pack.notes) {
+            const li = document.createElement('li');
+            li.innerText = note;
+            html.querySelector('#notes ul').append(li);
+        }
+
+        this.main.innerHTML = html.innerHTML;
+    }
 
     static async #getContentHTML(path) {
         const response = await fetch(`./content/${path}`);
