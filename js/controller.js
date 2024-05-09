@@ -3,84 +3,56 @@ import packs from './packs.js'
 
 
 class Controller {
-    constructor() {
-        this.main = document.querySelector('main');
-        
-        const searchParams = new URLSearchParams(location.search);
-        this.queryMod = searchParams.get('mod');
-        this.queryPack = searchParams.get('pack');
-    }
 
-    route() {
-        const mod = mods.find(mod => mod.id === this.queryMod);
-        if (mod) {
-            this.#loadMod(mod);
-            return;
-        }
-
-        const pack = packs.find(pack => pack.id === this.queryPack);
-        if (pack) {
-            this.#loadPack(pack);
-            return;
-        }
-
-        this.#loadCards();
-    }
-
-    async #loadCards() {
+    async loadCards() {
         const html = await Controller.#getContentHTML('cards.html');
 
         for (const mod of mods) {
             const cardTemplate = html.querySelector('#card').content.cloneNode(true);
-            
-            cardTemplate.querySelector('a').href = `?mod=${mod.id}`;
-            cardTemplate.querySelector('.card-title').innerText = mod.title;
-            cardTemplate.querySelector('.card-text').innerHTML = mod.description;
-
+            this.#fillCard(cardTemplate, mod, 'mod');
             html.querySelector('#mods ul').appendChild(cardTemplate);
         }
 
         for (const pack of packs) {
             const cardTemplate = html.querySelector('#card').content.cloneNode(true);
-            
-            cardTemplate.querySelector('a').href = `?pack=${pack.id}`;
-            cardTemplate.querySelector('.card-title').innerText = pack.title;
-            cardTemplate.querySelector('.card-text').innerHTML = pack.description;
-            
+            this.#fillCard(cardTemplate, pack, 'pack');
             html.querySelector('#packs ul').appendChild(cardTemplate);
         }
 
-        this.main.innerHTML = html.innerHTML;
+        document.querySelector('main').innerHTML = html.innerHTML;
     }
 
-    async #loadMod(mod) {
+    async loadMod(mod) {
         const html = await Controller.#getContentHTML('item.html');
 
-        html.querySelector('#title').innerText = mod.title;
-        html.querySelector('#description').innerText = mod.description;
+        this.#fillItem(html, mod);
         
-        for (const note of mod.notes) {
+        document.querySelector('main').innerHTML = html.innerHTML;
+    }
+
+    async loadPack(pack) {
+        const html = await Controller.#getContentHTML('item.html');
+
+        this.#fillItem(html, pack);
+
+        document.querySelector('main').innerHTML = html.innerHTML;
+    }
+
+    #fillCard(cardTemplate, item, query) {
+        cardTemplate.querySelector('a').href = `?${query}=${item.id}`;
+        cardTemplate.querySelector('.card-title').innerText = item.title;
+        cardTemplate.querySelector('.card-text').innerHTML = item.description;
+    }
+
+    #fillItem(html, item) {
+        html.querySelector('#title').innerText = item.title;
+        html.querySelector('#description').innerText = item.description;
+        
+        for (const note of item.notes) {
             const li = document.createElement('li');
             li.innerText = note;
             html.querySelector('#notes ul').append(li);
         }
-        
-        this.main.innerHTML = html.innerHTML;
-    }
-
-    async #loadPack(pack) {
-        const html = await Controller.#getContentHTML('item.html');
-
-        html.querySelector('#title').innerText = pack.title;
-        html.querySelector('#description').innerText = pack.description;
-
-        for (const note of pack.notes) {
-            const li = document.createElement('li');
-            li.innerText = note;
-            html.querySelector('#notes ul').append(li);
-        }
-
-        this.main.innerHTML = html.innerHTML;
     }
 
     static async #getContentHTML(path) {
@@ -94,6 +66,20 @@ class Controller {
 
 
 (() => {
+    const searchParams = new URLSearchParams(location.search);
     const controller = new Controller();
-    controller.route();
+    
+    const mod = mods.find(mod => mod.id === searchParams.get('mod'));
+    if (mod) {
+        controller.loadMod(mod);
+        return;        
+    }
+
+    const pack = packs.find(pack => pack.id === searchParams.get('pack'));
+    if (pack) {
+        controller.loadPack(pack);
+        return;
+    }
+
+    controller.loadCards();
 })();

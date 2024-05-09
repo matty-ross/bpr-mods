@@ -8,10 +8,12 @@
     --bs-body-bg: hsl(230deg 20% 15%);
     --bs-body-color: hsl(230deg 20% 75%);
     --bs-heading-color: hsl(230deg 20% 90%);
-    --bs-border-color: hsl(230deg 20% 60%);
+    --bs-border-color: var(--bs-heading-color);
 }
 
 main {
+    --bs-border-color: hsl(230deg 20% 60%);
+
     flex: 1;
 }
 
@@ -41,6 +43,7 @@ a {
 
 .btn {
     --bs-btn-color: var(--red-color);
+    --bs-btn-border-color: none;
     --bs-btn-hover-color: var(--blue-color);
     --bs-btn-active-color: var(--blue-color);
 }
