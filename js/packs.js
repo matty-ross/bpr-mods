@@ -9,5 +9,6 @@ export default [
             "The included VEHICLELIST.BUNDLE, WHEELLIST.BUNDLE, and 0001.BUNDLE are modified vanilla files.",
         ],
         images: [],
+        extraContent: true,
     },
 ];

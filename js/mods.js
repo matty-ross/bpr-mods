@@ -13,6 +13,7 @@ export default [
                 description: 'Dialog that appears after an exception rises.',
             },
         ],
+        extraContent: false,
     },
     {
         id: 'free-camera',
@@ -32,6 +33,7 @@ export default [
                 description: 'City view with custom camera transform.',
             },
         ],
+        extraContent: false,
     },
     {
         id: 'bully-repellent',
@@ -48,6 +50,7 @@ export default [
                 description: 'Menu with options for the mod.',
             },
         ],
+        extraContent: false,
     },
     {
         id: 'protection',
@@ -63,6 +66,7 @@ export default [
                 name: 'menu.png',
                 description: 'Menu with options for the mod.',
             },
-        ],        
+        ],
+        extraContent: false,
     },
 ];

@@ -26,6 +26,10 @@ class Controller {
         const html = await Controller.#getContentHtml('item.html');
 
         this.#fillItem(html, mod, 'mods');
+        if (mod.extraContent) {
+            const extraHtml = await Controller.#getContentHtml(`mods/${mod.id}.html`);
+            html.append(extraHtml);
+        }
         
         document.querySelector('main').innerHTML = html.innerHTML;
     }
@@ -34,6 +38,10 @@ class Controller {
         const html = await Controller.#getContentHtml('item.html');
 
         this.#fillItem(html, pack, 'packs');
+        if (pack.extraContent) {
+            const extraHtml = await Controller.#getContentHtml(`packs/${pack.id}.html`);
+            html.append(extraHtml);
+        }
 
         document.querySelector('main').innerHTML = html.innerHTML;
     }
@@ -64,10 +72,8 @@ class Controller {
     }
 
     static async #getContentHtml(path) {
-        const response = await fetch(`./content/${path}`);
-        const html = await response.text();
-        
         const parser = new DOMParser();
+        const html = await (await fetch(`./content/${path}`)).text();
         return parser.parseFromString(html, 'text/html').body;
     }
 }
