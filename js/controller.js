@@ -5,16 +5,16 @@ import packs from './packs.js'
 class Controller {
 
     async loadCards() {
-        const html = await Controller.#getContentHTML('cards.html');
+        const html = await Controller.#getContentHtml('cards.html');
 
         for (const mod of mods) {
-            const cardTemplate = html.querySelector('#card').content.cloneNode(true);
+            const cardTemplate = html.querySelector('#card-template').content.cloneNode(true);
             this.#fillCard(cardTemplate, mod, 'mod');
             html.querySelector('#mods ul').appendChild(cardTemplate);
         }
 
         for (const pack of packs) {
-            const cardTemplate = html.querySelector('#card').content.cloneNode(true);
+            const cardTemplate = html.querySelector('#card-template').content.cloneNode(true);
             this.#fillCard(cardTemplate, pack, 'pack');
             html.querySelector('#packs ul').appendChild(cardTemplate);
         }
@@ -23,17 +23,17 @@ class Controller {
     }
 
     async loadMod(mod) {
-        const html = await Controller.#getContentHTML('item.html');
+        const html = await Controller.#getContentHtml('item.html');
 
-        this.#fillItem(html, mod);
+        this.#fillItem(html, mod, 'mods');
         
         document.querySelector('main').innerHTML = html.innerHTML;
     }
 
     async loadPack(pack) {
-        const html = await Controller.#getContentHTML('item.html');
+        const html = await Controller.#getContentHtml('item.html');
 
-        this.#fillItem(html, pack);
+        this.#fillItem(html, pack, 'packs');
 
         document.querySelector('main').innerHTML = html.innerHTML;
     }
@@ -41,21 +41,29 @@ class Controller {
     #fillCard(cardTemplate, item, query) {
         cardTemplate.querySelector('a').href = `?${query}=${item.id}`;
         cardTemplate.querySelector('.card-title').innerText = item.title;
-        cardTemplate.querySelector('.card-text').innerHTML = item.description;
+        cardTemplate.querySelector('.card-text').innerText = item.description;
     }
 
-    #fillItem(html, item) {
+    #fillItem(html, item, folder) {
         html.querySelector('#title').innerText = item.title;
         html.querySelector('#description').innerText = item.description;
         
         for (const note of item.notes) {
-            const li = document.createElement('li');
-            li.innerText = note;
-            html.querySelector('#notes ul').append(li);
+            const noteTemplate = html.querySelector('#note-template').content.cloneNode(true);
+            noteTemplate.querySelector('li').innerText = note;
+            html.querySelector('#notes ul').append(noteTemplate);
+        }
+
+        for (const image of item.images) {
+            const imageTemplate = html.querySelector('#image-template').content.cloneNode(true);
+            imageTemplate.querySelector('.figure-img').src = `./img/${folder}/${item.id}/${image.name}`;
+            imageTemplate.querySelector('.figure-img').alt = image.name;
+            imageTemplate.querySelector('.figure-caption').innerText = image.description;
+            html.querySelector('#gallery ul').append(imageTemplate);
         }
     }
 
-    static async #getContentHTML(path) {
+    static async #getContentHtml(path) {
         const response = await fetch(`./content/${path}`);
         const html = await response.text();
         
@@ -66,8 +74,9 @@ class Controller {
 
 
 (() => {
-    const searchParams = new URLSearchParams(location.search);
     const controller = new Controller();
+    
+    const searchParams = new URLSearchParams(location.search);
     
     const mod = mods.find(mod => mod.id === searchParams.get('mod'));
     if (mod) {

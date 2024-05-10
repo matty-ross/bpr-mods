@@ -48,6 +48,10 @@ a {
     --bs-btn-active-color: var(--blue-color);
 }
 
+.figure-caption {
+    color: var(--bs-body-color);
+}
+
 #mods .card {
     border-top-color: var(--red-color);
 }

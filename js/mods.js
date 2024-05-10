@@ -8,7 +8,10 @@ export default [
             "Don't expect people immediatelly knowing what's wrong by uploading a screenshot of the exception report.",
         ],
         images: [
-            'exception-reporter.png',
+            {
+                name: 'dialog.png',
+                description: 'Dialog that appears after an exception rises.',
+            },
         ],
     },
     {
@@ -20,8 +23,14 @@ export default [
             "Use your mouse to freely transform the camera.",
         ],
         images: [
-            'free-camera-menu.png',
-            'free-camera.png',
+            {
+                name: 'menu.png',
+                description: 'Menu with options for the mod.',
+            },
+            {
+                name: 'city-view.png',
+                description: 'City view with custom camera transform.',
+            },
         ],
     },
     {
@@ -34,7 +43,10 @@ export default [
             "You cannot add yourself to the list, nor the same player multiple times.",
         ],
         images: [
-            'bully-repellent-menu.png',
+            {
+                name: 'menu.png',
+                description: 'Menu with options for the mod.',
+            },
         ],
     },
     {
@@ -47,7 +59,10 @@ export default [
             "You can individually set the replacement vehicle/challenge, or let it use the fallback vehicle/challenge.",
         ],
         images: [
-            'protection-menu.png',
+            {
+                name: 'menu.png',
+                description: 'Menu with options for the mod.',
+            },
         ],        
     },
 ];

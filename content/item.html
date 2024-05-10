@@ -1,12 +1,16 @@
 <h2 id="title" class="fw-bold mb-3"></h2>
 <p id="description"></p>
 
-<div id="notes" class="mt-5">
+<section id="notes" class="mt-5">
     <h3>Notes</h3>
     <ul></ul>
-</div>
 
-<div id="downloads" class="mt-5">
+    <template id="note-template">
+        <li></li>
+    </template>
+</section>
+
+<section id="downloads" class="mt-5">
     <h3>Downloads</h3>
     <table class="table table-sm">
         <thead>
@@ -19,7 +23,7 @@
         <tbody class="table-group-divider align-middle"></tbody>
     </table>
 
-    <template id="download-row">
+    <template id="download-template">
         <tr>
             <td>
                 <button type="button" class="btn ps-5">Download</button>
@@ -28,4 +32,18 @@
             <td></td>
         </tr>
     </template>
-</div>
+</section>
+
+<section id="gallery" class="mt-5">
+    <h3>Gallery</h3>
+    <ul class="list-unstyled"></ul>
+
+    <template id="image-template">
+        <li class="text-center mt-3">
+            <figure class="figure">
+                <img src="#" alt="" class="figure-img img-fluid">
+                <figcaption class="figure-caption"></figcaption>
+            </figure>
+        </li>
+    </template>
+</section>
