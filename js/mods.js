@@ -6,6 +6,9 @@ const downloads = [
     },
 ];
 
+const menuToggleHotkey = 'F7';
+
+
 export default [
     {
         id: 'exception-reporter',
@@ -19,7 +22,7 @@ export default [
         images: [
             {
                 name: 'dialog.png',
-                description: 'Dialog that appears after an exception rises.',
+                description: "Dialog that appears after an exception rises.",
             },
         ],
         extraContent: false,
@@ -29,18 +32,18 @@ export default [
         title: 'Free Camera',
         description: "Allows moving the external camera around the city. Plus various camera properties that can be changed.",
         notes: [
-            "Press F7 to toggle the menu.",
+            `Press ${menuToggleHotkey} to toggle the menu.`,
             "Use your mouse to freely transform the camera.",
         ],
         downloads: downloads,
         images: [
             {
                 name: 'menu.png',
-                description: 'Menu with options for the mod.',
+                description: "Menu with options for the mod.",
             },
             {
                 name: 'city-view.png',
-                description: 'City view with custom camera transform.',
+                description: "City view with custom camera transform.",
             },
         ],
         extraContent: false,
@@ -50,7 +53,7 @@ export default [
         title: 'Bully Repellent',
         description: "Automatically kicks or mutes a player on the user's blacklist.",
         notes: [
-            "Press F7 to toggle the menu.",
+            `Press ${menuToggleHotkey} to toggle the menu.`,
             "Players added to the blacklist aren't automatically kicked or muted, you must check either 'Autokick' or 'Automute'.",
             "You cannot add yourself to the list, nor the same player multiple times.",
         ],
@@ -58,7 +61,7 @@ export default [
         images: [
             {
                 name: 'menu.png',
-                description: 'Menu with options for the mod.',
+                description: "Menu with options for the mod.",
             },
         ],
         extraContent: false,
@@ -68,7 +71,7 @@ export default [
         title: 'Protection',
         description: "Replaces a new vehicle's or challenge's ID sent over the network to avoid crashing players.",
         notes: [
-            "Press F7 to toggle the menu.",
+            `Press ${menuToggleHotkey} to toggle the menu.`,
             "New vehicles and challenges are added to the protection list automatically.",
             "You can individually set the replacement vehicle/challenge, or let it use the fallback vehicle/challenge.",
         ],
@@ -76,7 +79,7 @@ export default [
         images: [
             {
                 name: 'menu.png',
-                description: 'Menu with options for the mod.',
+                description: "Menu with options for the mod.",
             },
         ],
         extraContent: false,
