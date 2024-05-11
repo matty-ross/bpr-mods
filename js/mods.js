@@ -1,3 +1,11 @@
+const downloads = [
+    {
+        name: 'mods',
+        version: '1.0.0',
+        hash: '0000000000000000000000000000000000000000000000000000000000000000',
+    },
+];
+
 export default [
     {
         id: 'exception-reporter',
@@ -7,6 +15,7 @@ export default [
             "It may not catch every exception.",
             "Don't expect people immediatelly knowing what's wrong by uploading a screenshot of the exception report.",
         ],
+        downloads: downloads,
         images: [
             {
                 name: 'dialog.png',
@@ -23,6 +32,7 @@ export default [
             "Press F7 to toggle the menu.",
             "Use your mouse to freely transform the camera.",
         ],
+        downloads: downloads,
         images: [
             {
                 name: 'menu.png',
@@ -44,6 +54,7 @@ export default [
             "Players added to the blacklist aren't automatically kicked or muted, you must check either 'Autokick' or 'Automute'.",
             "You cannot add yourself to the list, nor the same player multiple times.",
         ],
+        downloads: downloads,
         images: [
             {
                 name: 'menu.png',
@@ -61,6 +72,7 @@ export default [
             "New vehicles and challenges are added to the protection list automatically.",
             "You can individually set the replacement vehicle/challenge, or let it use the fallback vehicle/challenge.",
         ],
+        downloads: downloads,
         images: [
             {
                 name: 'menu.png',

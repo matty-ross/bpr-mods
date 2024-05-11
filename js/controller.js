@@ -62,6 +62,15 @@ class Controller {
             html.querySelector('#notes ul').append(noteTemplate);
         }
 
+        for (const download of item.downloads) {
+            const downloadTemplate = html.querySelector('#download-template').content.cloneNode(true);
+            downloadTemplate.querySelector('a').href = `./downloads/${folder}/${download.name ?? item.id}/${download.version}.zip`;
+            downloadTemplate.querySelector('a').download = `${download.name ?? item.id}-${download.version}.zip`;
+            downloadTemplate.querySelectorAll('td')[1].innerText = download.version;
+            downloadTemplate.querySelectorAll('td')[2].innerText = download.hash;
+            html.querySelector('#downloads tbody').append(downloadTemplate);
+        }
+
         for (const image of item.images) {
             const imageTemplate = html.querySelector('#image-template').content.cloneNode(true);
             imageTemplate.querySelector('.figure-img').src = `./img/${folder}/${item.id}/${image.name}`;

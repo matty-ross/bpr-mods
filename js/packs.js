@@ -8,6 +8,13 @@ export default [
             "The online vehicles have been moved to the Paradise Cars category.",
             "The included VEHICLELIST.BUNDLE, WHEELLIST.BUNDLE, and 0001.BUNDLE are modified vanilla files.",
         ],
+        downloads: [
+            {
+                name: null,
+                version: '1.0.0',
+                hash: '0000000000000000000000000000000000000000000000000000000000000000',
+            },
+        ],
         images: [],
         extraContent: true,
     },
