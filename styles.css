@@ -33,10 +33,6 @@ a {
     border-top-width: 3px;
 }
 
-.card:hover {
-    box-shadow: var(--bs-box-shadow-lg);
-}
-
 .table {
     --bs-table-color: var(--bs-body-color);
 }

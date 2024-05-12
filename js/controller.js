@@ -1,5 +1,5 @@
-import mods from './mods.js'
-import packs from './packs.js'
+import mods from './mods.js';
+import packs from './packs.js';
 
 
 class Controller {
@@ -30,7 +30,7 @@ class Controller {
             const extraHtml = await Controller.#getContentHtml(`mods/${mod.id}.html`);
             html.append(extraHtml);
         }
-        
+
         document.querySelector('main').innerHTML = html.innerHTML;
     }
 
@@ -55,7 +55,7 @@ class Controller {
     #fillItem(html, item, folder) {
         html.querySelector('#title').innerText = item.title;
         html.querySelector('#description').innerText = item.description;
-        
+
         for (const note of item.notes) {
             const noteTemplate = html.querySelector('#note-template').content.cloneNode(true);
             noteTemplate.querySelector('li').innerText = note;
@@ -90,16 +90,16 @@ class Controller {
 
 (() => {
     const controller = new Controller();
-    
+
     const searchParams = new URLSearchParams(location.search);
-    
     const mod = mods.find(mod => mod.id === searchParams.get('mod'));
+    const pack = packs.find(pack => pack.id === searchParams.get('pack'));
+
     if (mod) {
         controller.loadMod(mod);
-        return;        
+        return;
     }
 
-    const pack = packs.find(pack => pack.id === searchParams.get('pack'));
     if (pack) {
         controller.loadPack(pack);
         return;

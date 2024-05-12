@@ -13,7 +13,7 @@ export default [
     {
         id: 'exception-reporter',
         title: 'Exception Reporter',
-        description: "Displays a dialog with exception's information when it occurs.",
+        description: "Displays a dialog with exception's information when it rises.",
         notes: [
             "It may not catch every exception.",
             "Don't expect people immediatelly knowing what's wrong by uploading a screenshot of the exception report.",
@@ -73,7 +73,7 @@ export default [
         notes: [
             `Press ${menuToggleHotkey} to toggle the menu.`,
             "New vehicles and challenges are added to the protection list automatically.",
-            "You can individually set the replacement vehicle/challenge, or let it use the fallback vehicle/challenge.",
+            "You can set the replacement vehicle/challenge individually, or let it use the fallback vehicle/challenge.",
         ],
         downloads: downloads,
         images: [
