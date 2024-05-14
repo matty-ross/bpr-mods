@@ -7,6 +7,7 @@ export default [
             "All vehicles can be found in the 'RV2 Vehicles' category.",
             "The online vehicles have been moved to the Paradise Cars category.",
             "The included VEHICLELIST.BUNDLE, WHEELLIST.BUNDLE, and 0001.BUNDLE are modified vanilla files.",
+            "Original vehicles were made by PASHOk_M_oVe, I just ported them.",
         ],
         downloads: [
             {
@@ -15,7 +16,36 @@ export default [
                 hash: '0000000000000000000000000000000000000000000000000000000000000000',
             },
         ],
-        images: [],
+        images: [
+            {
+                name: 'rai-jin-superturbo.png',
+                description: 'Rai-Jin Superturbo',
+            },
+            {
+                name: 'extreme-olympus.png',
+                description: 'Extreme Olympus',
+            },
+            {
+                name: 'toy-pcpd-special.png',
+                description: 'Toy PCPD Special',
+            },
+            {
+                name: 'pcpd-olympus.png',
+                description: 'PCPD Olympus',
+            },
+            {
+                name: 'ford-fiesta-rs-wrc-ken-block.png',
+                description: 'Ford Fiesta RS WRC Ken Block',
+            },
+            {
+                name: 'tractor.png',
+                description: 'Tractor',
+            },
+            {
+                name: 'mine-truck.png',
+                description: 'Mine Truck',
+            },
+        ],
         extraContent: true,
     },
 ];
