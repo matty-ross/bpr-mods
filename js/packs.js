@@ -13,7 +13,7 @@ export default [
             {
                 name: null,
                 version: '1.0.0',
-                hash: '0000000000000000000000000000000000000000000000000000000000000000',
+                hash: 'D6DBC35218884ADAA6F2A7D5B5DD1656A40E38E690DA42526F9AAC00CE93202A',
             },
         ],
         images: [
