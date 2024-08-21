@@ -28,6 +28,7 @@ a {
 .card {
     --bs-card-title-color: var(--bs-heading-color);
     --bs-card-border-color: var(--bs-border-color);
+    --bs-card-border-radius: 0;
     --bs-card-height: 300px;
 
     border-top-width: 3px;
