@@ -5,29 +5,23 @@
     --bs-body-color: hsl(230deg 20% 75%);
     --bs-body-bg: hsl(230deg 20% 15%);
     --bs-heading-color: hsl(230deg 20% 90%);
-    --bs-border-color: hsl(230deg 20% 90%);
+    --bs-border-color: hsl(230deg 20% 60%);
 
     --red-color: hsl(345deg 80% 60%);
     --blue-color: hsl(180deg 100% 45%);
 }
 
-/* main {
-    --bs-border-color: hsl(230deg 20% 60%);
-} */
-
 a {
     text-decoration: none;
 }
 
-/* .card {
+.card {
     --bs-card-title-color: var(--bs-heading-color);
     --bs-card-border-color: var(--bs-border-color);
     --bs-card-border-radius: 0;
-    --bs-card-height: 300px;
-
-    border-top-width: 3px;
 }
 
+/*
 .table {
     --bs-table-color: var(--bs-body-color);
 }
@@ -42,6 +36,7 @@ a {
 .figure-caption {
     color: var(--bs-body-color);
 }
+*/
 
 #mods .card {
     border-top-color: var(--red-color);
@@ -53,4 +48,4 @@ a {
 
 #mods ul, #packs ul {
     grid-template-columns: repeat(auto-fill, 250px);
-} */
+}
