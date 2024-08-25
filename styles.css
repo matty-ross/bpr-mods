@@ -1,18 +1,24 @@
 @import url("https://fonts.googleapis.com/css?family=Inconsolata");
 
 :root {
+    --red-color: hsl(345deg 80% 60%);
+    --blue-color: hsl(180deg 100% 45%);
+    
     --bs-body-font-family: "Inconsolata", monospace;
     --bs-body-color: hsl(230deg 20% 75%);
     --bs-body-bg: hsl(230deg 20% 15%);
     --bs-heading-color: hsl(230deg 20% 90%);
+    --bs-code-color: var(--red-color);
     --bs-border-color: hsl(230deg 20% 60%);
 
-    --red-color: hsl(345deg 80% 60%);
-    --blue-color: hsl(180deg 100% 45%);
 }
 
 header, footer {
     --bs-border-color: var(--bs-heading-color);
+}
+
+a {
+    color: var(--blue-color);
 }
 
 .card {

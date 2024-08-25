@@ -56,11 +56,11 @@ class Controller {
         html.querySelector('#title').innerText = item.title;
         html.querySelector('#description').innerText = item.description;
 
-        for (const note of item.notes) {
-            const noteTemplate = html.querySelector('#note-template').content.cloneNode(true);
-            noteTemplate.querySelector('li').innerText = note;
-            html.querySelector('#notes ul').append(noteTemplate);
-        }
+        // for (const note of item.notes) {
+        //     const noteTemplate = html.querySelector('#note-template').content.cloneNode(true);
+        //     noteTemplate.querySelector('li').innerText = note;
+        //     html.querySelector('#notes ul').append(noteTemplate);
+        // }
 
         for (const download of item.downloads) {
             const downloadTemplate = html.querySelector('#download-template').content.cloneNode(true);
