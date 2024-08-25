@@ -5,47 +5,15 @@
     --bs-body-color: hsl(230deg 20% 75%);
     --bs-body-bg: hsl(230deg 20% 15%);
     --bs-heading-color: hsl(230deg 20% 90%);
-    --bs-border-color: hsl(230deg 20% 60%);
-
-    --red-color: hsl(345deg 80% 60%);
-    --blue-color: hsl(180deg 100% 45%);
-}
-
-a {
-    text-decoration: none;
 }
 
 .card {
     --bs-card-title-color: var(--bs-heading-color);
-    --bs-card-border-color: var(--bs-border-color);
+    --bs-card-border-color: hsl(230deg 20% 60%);
     --bs-card-border-radius: 0;
 }
 
-/*
 .table {
     --bs-table-color: var(--bs-body-color);
-}
-
-.btn {
-    --bs-btn-color: var(--red-color);
-    --bs-btn-border-color: none;
-    --bs-btn-hover-color: var(--blue-color);
-    --bs-btn-active-color: var(--blue-color);
-}
-
-.figure-caption {
-    color: var(--bs-body-color);
-}
-*/
-
-#mods .card {
-    border-top-color: var(--red-color);
-}
-
-#packs .card {
-    border-top-color: var(--blue-color);
-}
-
-#mods ul, #packs ul {
-    grid-template-columns: repeat(auto-fill, 250px);
+    --bs-table-border-color: hsl(230deg 20% 60%);
 }
