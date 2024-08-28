@@ -10,61 +10,47 @@ class Controller {
         for (const mod of mods) {
             const cardTemplate = html.querySelector('#card-template').content.cloneNode(true);
             this.#fillCard(cardTemplate, mod, 'mod');
-            html.querySelector('#mods ul').appendChild(cardTemplate);
+            html.querySelector('#mods ul').append(cardTemplate);
         }
 
         for (const pack of packs) {
             const cardTemplate = html.querySelector('#card-template').content.cloneNode(true);
             this.#fillCard(cardTemplate, pack, 'pack');
-            html.querySelector('#packs ul').appendChild(cardTemplate);
+            html.querySelector('#packs ul').append(cardTemplate);
         }
 
         document.querySelector('main').innerHTML = html.innerHTML;
     }
 
-    async loadMod(mod) {
+    async loadItem(item, itemType) {
         const html = await Controller.#getContentHtml('item.html');
 
-        this.#fillItem(html, mod, 'mods');
-        if (mod.extraContent) {
-            const extraHtml = await Controller.#getContentHtml(`mods/${mod.id}.html`);
+        this.#fillItem(html, item, itemType);
+        if (item.extraContent) {
+            const extraHtml = await Controller.#getContentHtml(`${itemType}s/${item.id}.html`);
             html.append(extraHtml);
         }
 
         document.querySelector('main').innerHTML = html.innerHTML;
     }
 
-    async loadPack(pack) {
-        const html = await Controller.#getContentHtml('item.html');
-
-        this.#fillItem(html, pack, 'packs');
-        if (pack.extraContent) {
-            const extraHtml = await Controller.#getContentHtml(`packs/${pack.id}.html`);
-            html.append(extraHtml);
-        }
-
-        document.querySelector('main').innerHTML = html.innerHTML;
-    }
-
-    #fillCard(cardTemplate, item, query) {
-        cardTemplate.querySelector('a').href = `?${query}=${item.id}`;
+    #fillCard(cardTemplate, item, itemType) {
+        cardTemplate.querySelector('a').href = `?${itemType}=${item.id}`;
         cardTemplate.querySelector('.card-title').innerText = item.title;
         cardTemplate.querySelector('.card-text').innerText = item.description;
     }
 
-    #fillItem(html, item, folder) {
+    #fillItem(html, item, itemType) {
         html.querySelector('#title').innerText = item.title;
         html.querySelector('#description').innerText = item.description;
 
-        // for (const note of item.notes) {
-        //     const noteTemplate = html.querySelector('#note-template').content.cloneNode(true);
-        //     noteTemplate.querySelector('li').innerText = note;
-        //     html.querySelector('#notes ul').append(noteTemplate);
-        // }
+        html.querySelectorAll(`[data-item-type="${itemType}"]`).forEach((element) => {
+            element.hidden = false;
+        });
 
         for (const download of item.downloads) {
             const downloadTemplate = html.querySelector('#download-template').content.cloneNode(true);
-            downloadTemplate.querySelector('a').href = `./downloads/${folder}/${download.name ?? item.id}/${download.version}.zip`;
+            downloadTemplate.querySelector('a').href = `./downloads/${itemType}s/${download.name ?? item.id}/${download.version}.zip`;
             downloadTemplate.querySelector('a').download = `${download.name ?? item.id}-${download.version}.zip`;
             downloadTemplate.querySelectorAll('td')[1].innerText = download.version;
             downloadTemplate.querySelectorAll('td')[2].innerText = download.hash;
@@ -73,7 +59,7 @@ class Controller {
 
         for (const image of item.images) {
             const imageTemplate = html.querySelector('#image-template').content.cloneNode(true);
-            imageTemplate.querySelector('.figure-img').src = `./img/${folder}/${item.id}/${image.name}`;
+            imageTemplate.querySelector('.figure-img').src = `./img/${itemType}s/${item.id}/${image.name}`;
             imageTemplate.querySelector('.figure-img').alt = image.name;
             imageTemplate.querySelector('.figure-caption').innerText = image.description;
             html.querySelector('#gallery ul').append(imageTemplate);
@@ -83,6 +69,7 @@ class Controller {
     static async #getContentHtml(path) {
         const parser = new DOMParser();
         const html = await (await fetch(`./content/${path}`)).text();
+        
         return parser.parseFromString(html, 'text/html').body;
     }
 }
@@ -96,12 +83,12 @@ class Controller {
     const pack = packs.find(pack => pack.id === searchParams.get('pack'));
 
     if (mod) {
-        controller.loadMod(mod);
+        controller.loadItem(mod, 'mod');
         return;
     }
 
     if (pack) {
-        controller.loadPack(pack);
+        controller.loadItem(pack, 'pack');
         return;
     }
 
