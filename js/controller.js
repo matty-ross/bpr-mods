@@ -26,10 +26,6 @@ class Controller {
         const html = await Controller.#getContentHtml('item.html');
 
         this.#fillItem(html, item, itemType);
-        if (item.extraContent) {
-            const extraHtml = await Controller.#getContentHtml(`${itemType}s/${item.id}.html`);
-            html.append(extraHtml);
-        }
 
         document.querySelector('main').innerHTML = html.innerHTML;
     }
@@ -62,7 +58,7 @@ class Controller {
             imageTemplate.querySelector('.figure-img').src = `./img/${itemType}s/${item.id}/${image.name}`;
             imageTemplate.querySelector('.figure-img').alt = image.name;
             imageTemplate.querySelector('.figure-caption').innerText = image.description;
-            html.querySelector('#gallery ul').append(imageTemplate);
+            html.querySelector('#images ul').append(imageTemplate);
         }
     }
 
