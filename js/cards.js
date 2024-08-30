@@ -24,10 +24,9 @@ export default class {
     }
 
     #fillCard(item, itemType) {
-        const cardHtml = this.#cardsHtml.querySelector('#card-template').content.cloneNode(true)
+        const cardHtml = this.#cardsHtml.querySelector('#card-template').content.cloneNode(true);
 
         cardHtml.querySelector('a').href = `?${itemType}=${item.id}`;
-        cardHtml.querySelector('.card-header').innerText = itemType;
         cardHtml.querySelector('.card-title').innerText = item.title;
         cardHtml.querySelector('.card-text').innerText = item.description;
 
