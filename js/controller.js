@@ -70,7 +70,7 @@ function createDownloadHtml(itemHtml, item, itemType, download) {
 
     downloadHtml.querySelector('a').href = `./downloads/${itemType}s/${download.name ?? item.id}/${download.version}.zip`;
     downloadHtml.querySelector('a').download = `${download.name ?? item.id}-${download.version}.zip`;
-    downloadHtml.querySelectorAll('td')[1].innerText = download.version;
+    downloadHtml.querySelectorAll('td')[1].innerText = download.version + (download.deprecated ? ' [deprecated]' : '');
     downloadHtml.querySelectorAll('td')[2].innerText = download.hash;
 
     return downloadHtml;

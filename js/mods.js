@@ -3,11 +3,13 @@ const downloads = [
         name: 'mods',
         version: '1.1.0',
         hash: '',
+        deprecated: false,
     },
     {
         name: 'mods',
         version: '1.0.0',
         hash: 'DC34D4B74504AFEC39B808619E4C897282266A660274DD254F2FE3736830D14F',
+        deprecated: true,
     },
 ];
 
