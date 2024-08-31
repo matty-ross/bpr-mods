@@ -6,7 +6,7 @@ import packs from './packs.js';
 
 async function loadCards() {
     const cardsHtml = await getContentHtml('cards.html');
-    
+
     for (const mod of mods) {
         const cardHtml = createCardHtml(cardsHtml, mod, 'mod');
         cardsHtml.querySelector('#mods ul').append(cardHtml);
@@ -43,7 +43,7 @@ async function loadItem(item, itemType) {
     itemHtml.querySelectorAll(`[data-item-type="${itemType}"]`).forEach((element) => {
         element.hidden = false;
     });
-    
+
     itemHtml.querySelector(`#notes ul[data-item-type="${itemType}"]`).append(
         ...itemExtendedHtml.querySelectorAll('#notes li')
     );
@@ -92,7 +92,7 @@ function createImageHtml(itemHtml, item, itemType, image) {
 async function getContentHtml(path) {
     const response = await fetch(`./content/${path}`);
     const html = await response.text();
-    
+
     const parser = new DOMParser();
     return parser.parseFromString(html, 'text/html').body;
 }
@@ -100,7 +100,7 @@ async function getContentHtml(path) {
 
 (() => {
     const searchParams = new URLSearchParams(location.search);
-    
+
     const mod = mods.find(mod => mod.id === searchParams.get('mod'));
     if (mod) {
         loadItem(mod, 'mod');
