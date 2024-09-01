@@ -3,7 +3,7 @@
 :root {
     --red-color: hsl(345deg 80% 60%);
     --blue-color: hsl(180deg 100% 45%);
-    
+
     --bs-body-font-family: "Inconsolata", monospace;
     --bs-body-color: hsl(230deg 20% 75%);
     --bs-body-bg: hsl(230deg 20% 15%);
@@ -13,6 +13,7 @@
 }
 
 header, footer {
+    --bs-border-width: 2px;
     --bs-border-color: var(--bs-heading-color);
 }
 
@@ -21,6 +22,7 @@ a {
 }
 
 .card {
+    --bs-card-title-spacer-y: 1rem;
     --bs-card-title-color: var(--bs-heading-color);
     --bs-card-border-color: var(--bs-border-color);
     --bs-card-border-radius: 0;
