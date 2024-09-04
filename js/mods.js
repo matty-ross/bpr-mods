@@ -2,7 +2,7 @@ const downloads = [
     {
         name: 'mods',
         version: '1.1.0',
-        hash: '',
+        hash: 'D11440E01B9891EC780C09896304C24DF491CA4837434FE80C6C271ABC85B308',
         deprecated: false,
     },
     {
