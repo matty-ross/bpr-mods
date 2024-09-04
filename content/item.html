@@ -1,13 +1,33 @@
-<h2 id="title" class="fw-bold mb-3"></h2>
-<p id="description"></p>
+<hgroup>
+    <h2 id="title" class="fw-bold"></h2>
+    <p id="description"></p>
+</hgroup>
+
+<section id="installation" class="mt-5">
+    <h3>Installation</h3>
+    <ol data-item-type="mod" hidden>
+        <li>Download and install <a href="https://bpr.bo98.uk" target="_blank">Bo98's BPR Modder tool</a> (if you haven't already).</li>
+        <li>Download the archive.</li>
+        <li>Extract <code>mod-manager.dll</code> and <code>imgui.dll</code> to the game's root folder.</li>
+        <li>Extract individual <code>mods/*.dll</code> files to the game's <code>mods</code> folder previously created in step 1.</li>
+    </ol>
+    <ol data-item-type="pack" hidden>
+        <li>Download the archive.</li>
+        <li>Extract <code>Game Files</code> folder to the game's root folder.</li>
+    </ol>
+</section>
 
 <section id="notes" class="mt-5">
     <h3>Notes</h3>
-    <ul></ul>
-
-    <template id="note-template">
-        <li></li>
-    </template>
+    <ul data-item-type="mod" hidden>
+        <li>Default hotkey for toggling menus is <kbd>F7</kbd> (they aren't visible by default).</li>
+        <li>Default hotkey for toggling overlays is <kbd>F8</kbd> (they are visible by default).</li>
+        <li>The hotkeys can be changed in <code>mod-manager-config.yaml</code> file.</li>
+        <li>Enabling ImGui's multiviewports allows you to drag the menus outside of the game's window (it may cause FPS drops or crashes).</li>
+    </ul>
+    <ul data-item-type="pack" hidden>
+        <li><code>Modding</code> folder contains files that you can use to integrate the pack with other mods.</li>
+    </ul>
 </section>
 
 <section id="downloads" class="mt-5">
@@ -36,14 +56,14 @@
     </template>
 </section>
 
-<section id="gallery" class="mt-5">
-    <h3>Gallery</h3>
+<section id="images" class="mt-5">
+    <h3>Images</h3>
     <ul class="list-unstyled"></ul>
 
     <template id="image-template">
         <li class="text-center mt-3">
             <figure class="figure">
-                <img src="#" alt="" class="figure-img img-fluid">
+                <img src="#" alt="" class="figure-img img-fluid" />
                 <figcaption class="figure-caption"></figcaption>
             </figure>
         </li>

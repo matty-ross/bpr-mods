@@ -2,108 +2,116 @@ import mods from './mods.js';
 import packs from './packs.js';
 
 
-class Controller {
+// ==== cards ====
 
-    async loadCards() {
-        const html = await Controller.#getContentHtml('cards.html');
+async function loadCards() {
+    const cardsHtml = await getContentHtml('cards.html');
 
-        for (const mod of mods) {
-            const cardTemplate = html.querySelector('#card-template').content.cloneNode(true);
-            this.#fillCard(cardTemplate, mod, 'mod');
-            html.querySelector('#mods ul').appendChild(cardTemplate);
-        }
-
-        for (const pack of packs) {
-            const cardTemplate = html.querySelector('#card-template').content.cloneNode(true);
-            this.#fillCard(cardTemplate, pack, 'pack');
-            html.querySelector('#packs ul').appendChild(cardTemplate);
-        }
-
-        document.querySelector('main').innerHTML = html.innerHTML;
+    for (const mod of mods) {
+        const cardHtml = createCardHtml(cardsHtml, mod, 'mod');
+        cardsHtml.querySelector('#mods ul').append(cardHtml);
     }
 
-    async loadMod(mod) {
-        const html = await Controller.#getContentHtml('item.html');
-
-        this.#fillItem(html, mod, 'mods');
-        if (mod.extraContent) {
-            const extraHtml = await Controller.#getContentHtml(`mods/${mod.id}.html`);
-            html.append(extraHtml);
-        }
-
-        document.querySelector('main').innerHTML = html.innerHTML;
+    for (const pack of packs) {
+        const cardHtml = createCardHtml(cardsHtml, pack, 'pack');
+        cardsHtml.querySelector('#packs ul').append(cardHtml);
     }
 
-    async loadPack(pack) {
-        const html = await Controller.#getContentHtml('item.html');
+    document.querySelector('main').innerHTML = cardsHtml.innerHTML;
+}
 
-        this.#fillItem(html, pack, 'packs');
-        if (pack.extraContent) {
-            const extraHtml = await Controller.#getContentHtml(`packs/${pack.id}.html`);
-            html.append(extraHtml);
-        }
+function createCardHtml(cardsHtml, item, itemType) {
+    const cardHtml = cardsHtml.querySelector('#card-template').content.cloneNode(true);
 
-        document.querySelector('main').innerHTML = html.innerHTML;
+    cardHtml.querySelector('a').href = `?${itemType}=${item.id}`;
+    cardHtml.querySelector('.card-title').innerText = item.title;
+    cardHtml.querySelector('.card-text').innerText = item.description;
+
+    return cardHtml;
+}
+
+
+// ==== item ====
+
+async function loadItem(item, itemType) {
+    const itemHtml = await getContentHtml('item.html');
+    const itemExtendedHtml = await getContentHtml(`${itemType}s/${item.id}.html`);
+
+    itemHtml.querySelector('#title').innerText = item.title;
+    itemHtml.querySelector('#description').innerText = item.description;
+
+    itemHtml.querySelectorAll(`[data-item-type="${itemType}"]`).forEach((element) => {
+        element.hidden = false;
+    });
+
+    itemHtml.querySelector(`#notes ul[data-item-type="${itemType}"]`).append(
+        ...itemExtendedHtml.querySelectorAll('#notes li')
+    );
+
+    for (const download of item.downloads) {
+        const downloadHtml = createDownloadHtml(itemHtml, item, itemType, download);
+        itemHtml.querySelector('#downloads tbody').append(downloadHtml);
     }
 
-    #fillCard(cardTemplate, item, query) {
-        cardTemplate.querySelector('a').href = `?${query}=${item.id}`;
-        cardTemplate.querySelector('.card-title').innerText = item.title;
-        cardTemplate.querySelector('.card-text').innerText = item.description;
+    for (const image of item.images) {
+        const imageHtml = createImageHtml(itemHtml, item, itemType, image);
+        itemHtml.querySelector('#images ul').append(imageHtml);
     }
 
-    #fillItem(html, item, folder) {
-        html.querySelector('#title').innerText = item.title;
-        html.querySelector('#description').innerText = item.description;
+    itemHtml.append(
+        ...itemExtendedHtml.querySelectorAll('#extra section')
+    );
 
-        for (const note of item.notes) {
-            const noteTemplate = html.querySelector('#note-template').content.cloneNode(true);
-            noteTemplate.querySelector('li').innerText = note;
-            html.querySelector('#notes ul').append(noteTemplate);
-        }
+    document.querySelector('main').innerHTML = itemHtml.innerHTML;
+}
 
-        for (const download of item.downloads) {
-            const downloadTemplate = html.querySelector('#download-template').content.cloneNode(true);
-            downloadTemplate.querySelector('a').href = `./downloads/${folder}/${download.name ?? item.id}/${download.version}.zip`;
-            downloadTemplate.querySelector('a').download = `${download.name ?? item.id}-${download.version}.zip`;
-            downloadTemplate.querySelectorAll('td')[1].innerText = download.version;
-            downloadTemplate.querySelectorAll('td')[2].innerText = download.hash;
-            html.querySelector('#downloads tbody').append(downloadTemplate);
-        }
+function createDownloadHtml(itemHtml, item, itemType, download) {
+    const downloadHtml = itemHtml.querySelector('#download-template').content.cloneNode(true);
 
-        for (const image of item.images) {
-            const imageTemplate = html.querySelector('#image-template').content.cloneNode(true);
-            imageTemplate.querySelector('.figure-img').src = `./img/${folder}/${item.id}/${image.name}`;
-            imageTemplate.querySelector('.figure-img').alt = image.name;
-            imageTemplate.querySelector('.figure-caption').innerText = image.description;
-            html.querySelector('#gallery ul').append(imageTemplate);
-        }
-    }
+    downloadHtml.querySelector('a').href = `./downloads/${itemType}s/${download.name ?? item.id}/${download.version}.zip`;
+    downloadHtml.querySelector('a').download = `${download.name ?? item.id}-${download.version}.zip`;
+    downloadHtml.querySelectorAll('td')[1].innerText = download.version + (download.deprecated ? ' [deprecated]' : '');
+    downloadHtml.querySelectorAll('td')[2].innerText = download.hash;
 
-    static async #getContentHtml(path) {
-        const parser = new DOMParser();
-        const html = await (await fetch(`./content/${path}`)).text();
-        return parser.parseFromString(html, 'text/html').body;
-    }
+    return downloadHtml;
+}
+
+function createImageHtml(itemHtml, item, itemType, image) {
+    const imageHtml = itemHtml.querySelector('#image-template').content.cloneNode(true);
+
+    imageHtml.querySelector('.figure-img').src = `./img/${itemType}s/${item.id}/${image.name}`;
+    imageHtml.querySelector('.figure-img').alt = image.name;
+    imageHtml.querySelector('.figure-caption').innerText = image.description;
+
+    return imageHtml;
+}
+
+
+// ==== ====
+
+async function getContentHtml(path) {
+    const response = await fetch(`./content/${path}`);
+    const html = await response.text();
+
+    const parser = new DOMParser();
+    return parser.parseFromString(html, 'text/html').body;
 }
 
 
 (() => {
-    const controller = new Controller();
-
     const searchParams = new URLSearchParams(location.search);
+
     const mod = mods.find(mod => mod.id === searchParams.get('mod'));
-    const pack = packs.find(pack => pack.id === searchParams.get('pack'));
-
     if (mod) {
-        controller.loadMod(mod);
+        loadItem(mod, 'mod');
         return;
     }
 
+    const pack = packs.find(pack => pack.id === searchParams.get('pack'));
     if (pack) {
-        controller.loadPack(pack);
+        loadItem(pack, 'pack');
         return;
     }
 
-    controller.loadCards();
+    loadCards();
 })();

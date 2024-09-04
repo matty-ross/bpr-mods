@@ -1,36 +1,31 @@
-@import url('https://fonts.googleapis.com/css?family=Inconsolata');
+@import url("https://fonts.googleapis.com/css?family=Inconsolata");
 
 :root {
     --red-color: hsl(345deg 80% 60%);
     --blue-color: hsl(180deg 100% 45%);
 
-    --bs-body-font-family: 'Inconsolata', monospace;
-    --bs-body-bg: hsl(230deg 20% 15%);
+    --bs-body-font-family: "Inconsolata", monospace;
     --bs-body-color: hsl(230deg 20% 75%);
+    --bs-body-bg: hsl(230deg 20% 15%);
     --bs-heading-color: hsl(230deg 20% 90%);
+    --bs-code-color: var(--red-color);
+    --bs-border-color: hsl(230deg 20% 60%);
+}
+
+header, footer {
+    --bs-border-width: 2px;
     --bs-border-color: var(--bs-heading-color);
 }
 
-main {
-    --bs-border-color: hsl(230deg 20% 60%);
-
-    flex: 1;
-}
-
 a {
-    text-decoration: none;
-}
-
-.container {
-    min-height: 100vh;
+    color: var(--blue-color);
 }
 
 .card {
+    --bs-card-title-spacer-y: 1rem;
     --bs-card-title-color: var(--bs-heading-color);
     --bs-card-border-color: var(--bs-border-color);
-    --bs-card-height: 300px;
-
-    border-top-width: 3px;
+    --bs-card-border-radius: 0;
 }
 
 .table {
@@ -38,14 +33,23 @@ a {
 }
 
 .btn {
-    --bs-btn-color: var(--red-color);
-    --bs-btn-border-color: none;
-    --bs-btn-hover-color: var(--blue-color);
-    --bs-btn-active-color: var(--blue-color);
+    --bs-btn-color: var(--blue-color);
+    --bs-btn-border-color: var(--blue-color);
+    --bs-btn-hover-color: var(--red-color);
+    --bs-btn-hover-border-color: var(--red-color);
 }
 
 .figure-caption {
     color: var(--bs-body-color);
+}
+
+#mods ul, #packs ul {
+    grid-template-columns: repeat(auto-fill, 250px);
+}
+
+#mods .card, #packs .card {
+    height: 300px;
+    border-top-width: 3px;
 }
 
 #mods .card {
@@ -54,8 +58,4 @@ a {
 
 #packs .card {
     border-top-color: var(--blue-color);
-}
-
-#mods ul, #packs ul {
-    grid-template-columns: repeat(auto-fill, 250px);
 }
