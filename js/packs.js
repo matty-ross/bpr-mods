@@ -1,8 +1,8 @@
 export default [
     {
-        id: 'rv2-vehicles',
-        title: 'RV2 Vehicles',
-        description: "Ported RV2 vehicles.",
+        id: 'rv2-remastered',
+        title: 'RV2 Remastered',
+        description: "Ported RV2 stuff.",
         downloads: [
             {
                 name: null,
