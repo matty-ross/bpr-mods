@@ -6,6 +6,30 @@ export default [
         downloads: [
         ],
         images: [
+            {
+                name: 'extreme-olympus.png',
+                description: 'Extreme Olympus',
+            },
+            {
+                name: 'rai-jin-superturbo.png',
+                description: 'Rai-Jin Superturbo',
+            },
+            {
+                name: 'toy-extreme-olympus.png',
+                description: 'Toy Extreme Olympus',
+            },
+            {
+                name: 'toy-extreme-hot-rod.png',
+                description: 'Toy Extreme Hot Rod',
+            },
+            {
+                name: 'toy-mech.png',
+                description: 'Toy Mech',
+            },
+            {
+                name: 'toy-city-bus.png',
+                description: 'Toy City Bus',
+            },
         ],
     },
     {
