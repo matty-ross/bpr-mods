@@ -4,6 +4,12 @@ export default [
         title: 'RV1.4 Remastered',
         description: "Ported RV1.4 stuff.",
         downloads: [
+            {
+                name: null,
+                version: '1.0.0',
+                hash: '4ACA68F3F0D8F71CE3873F776A5132A3A8B3F00AACB971277C6A4FE0520BDD15',
+                deprecated: false,
+            },
         ],
         images: [
             {
