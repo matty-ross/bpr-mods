@@ -67,4 +67,11 @@ export default [
             },
         ],
     },
+    {
+        id: 'dashboard',
+        title: 'Dashboard',
+        description: "Displays vehicle's speed, RPM, gear, and other stuff in the HUD.",
+        downloads: downloads,
+        images: [],
+    },
 ];
