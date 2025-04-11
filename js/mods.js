@@ -72,6 +72,11 @@ export default [
         title: 'Dashboard',
         description: "Displays vehicle's speed, RPM, gear, and other stuff in the HUD.",
         downloads: downloads,
-        images: [],
+        images: [
+            {
+                name: 'hud.png',
+                description: "Dashboard HUD."
+            }
+        ],
     },
 ];
