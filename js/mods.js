@@ -76,7 +76,11 @@ export default [
             {
                 name: 'hud.png',
                 description: "Dashboard HUD."
-            }
+            },
+            {
+                name: 'menu.png',
+                description: "Menu with options for the mod.",
+            },
         ],
     },
 ];
