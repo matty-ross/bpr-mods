@@ -1,9 +1,15 @@
 const downloads = [
     {
         name: 'mods',
+        version: '1.2.0',
+        hash: 'CF73C4FB32419C11A035BBF154E4C5A159C2B6A3BE4ADFB49C12F1F1E2601EBA',
+        deprecated: false,
+    },
+    {
+        name: 'mods',
         version: '1.1.0',
         hash: 'D11440E01B9891EC780C09896304C24DF491CA4837434FE80C6C271ABC85B308',
-        deprecated: false,
+        deprecated: true,
     },
     {
         name: 'mods',
@@ -61,6 +67,22 @@ export default [
         description: "Replaces a new vehicle's or challenge's ID sent over the network to avoid crashing players.",
         downloads: downloads,
         images: [
+            {
+                name: 'menu.png',
+                description: "Menu with options for the mod.",
+            },
+        ],
+    },
+    {
+        id: 'dashboard',
+        title: 'Dashboard',
+        description: "Displays vehicle's speed, RPM, gear, and other stuff in the HUD.",
+        downloads: downloads,
+        images: [
+            {
+                name: 'hud.png',
+                description: "Dashboard HUD."
+            },
             {
                 name: 'menu.png',
                 description: "Menu with options for the mod.",
