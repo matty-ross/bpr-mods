@@ -1,9 +1,15 @@
 const downloads = [
     {
         name: 'mods',
+        version: '1.2.0',
+        hash: 'CF73C4FB32419C11A035BBF154E4C5A159C2B6A3BE4ADFB49C12F1F1E2601EBA',
+        deprecated: false,
+    },
+    {
+        name: 'mods',
         version: '1.1.0',
         hash: 'D11440E01B9891EC780C09896304C24DF491CA4837434FE80C6C271ABC85B308',
-        deprecated: false,
+        deprecated: true,
     },
     {
         name: 'mods',
