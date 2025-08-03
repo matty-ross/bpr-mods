@@ -68,6 +68,7 @@ async function loadItem(item, itemType) {
 function createDownloadHtml(itemHtml, item, itemType, download) {
     const downloadHtml = itemHtml.querySelector('#download-template').content.cloneNode(true);
 
+    downloadHtml.querySelector('tr').style.opacity = download.deprecated ? '65%' : '100%';
     downloadHtml.querySelector('a').href = `./downloads/${itemType}s/${download.name ?? item.id}/${download.version}.zip`;
     downloadHtml.querySelector('a').download = `${download.name ?? item.id}-${download.version}.zip`;
     downloadHtml.querySelectorAll('td')[1].innerText = download.version + (download.deprecated ? ' [deprecated]' : '');
