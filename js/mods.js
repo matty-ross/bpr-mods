@@ -1,9 +1,15 @@
 const downloads = [
     {
         name: 'mods',
+        version: '1.3.0',
+        hash: '',
+        deprecated: false,
+    },
+    {
+        name: 'mods',
         version: '1.2.0',
         hash: 'CF73C4FB32419C11A035BBF154E4C5A159C2B6A3BE4ADFB49C12F1F1E2601EBA',
-        deprecated: false,
+        deprecated: true,
     },
     {
         name: 'mods',
@@ -83,6 +89,18 @@ export default [
                 name: 'hud.png',
                 description: "Dashboard HUD."
             },
+            {
+                name: 'menu.png',
+                description: "Menu with options for the mod.",
+            },
+        ],
+    },
+    {
+        id: 'mod-menu',
+        title: 'Mod Menu',
+        description: "Allows editing environment, vehicle, and other stuff.",
+        downloads: downloads,
+        images: [
             {
                 name: 'menu.png',
                 description: "Menu with options for the mod.",
