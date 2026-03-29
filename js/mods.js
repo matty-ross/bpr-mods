@@ -107,4 +107,11 @@ export default [
             },
         ],
     },
+    {
+        id: 'quality-of-life',
+        title: 'Quality of Life',
+        description: "Includes bug fixes, extra settings, enhancements, and removed or hidden stuff.",
+        downloads: downloads,
+        images: [],
+    },
 ];
